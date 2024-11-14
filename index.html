@@ -8,8 +8,10 @@
 
 <body>
     <h1>Physics Question Generator</h1>
+    <p id="introduction">These questions are the questions from the <b>Gravitational Potential Energy</b> and <b>Orbits</b> worksheet but with randomized values.</p>
+    <p id="questionsGenerated"></p>
     <button onclick ="generateQuestion()">generate question</button>
-    <p style ='display: none;', id = 'question'></p>
+    <p style ='display: none;', id ='question'></p>
     <div style='display: none;', id="firstQuestion">
         <p id = 'questionOne'></p>
         <input type="text" id="userAnswerOne" placeholder="Enter your answer"/>
@@ -36,4 +38,5 @@
         <p style='display: none;' id="answerThree"></p>
         <p id="feedbackThree"></p>
     </div>
+
 </body>
