@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <title>physics question generator</title>
+    <script src = 'script.js'></script>
+    <link rel="stylesheet" href='style.css'>
+</head>
+
+<body>
+    <h1>Physics Question Generator</h1>
+    <p id="introduction">These questions are the questions from the <b>Gravitational Potential Energy</b> and <b>Orbits</b> worksheet but with randomized values.</p>
+    <p id="questionsGenerated"></p>
+    <button onclick ="generateQuestion()">generate question</button>
+    <p style ='display: none;', id ='question'></p>
+    <div style='display: none;', id="firstQuestion">
+        <p id = 'questionOne'></p>
+        <input type="text" id="userAnswerOne" placeholder="Enter your answer"/>
+        <button onclick="checkAnswerOne()">Submit</button>
+        <button onclick="showAnswerOne()">Check Answer</button>
+        <p style='display: none;' id="answerOne"></p>
+        <p id="feedbackOne"></p>
+    </div>
+
+    <div style='display: none;', id="secondQuestion">
+        <p id = 'questionTwo'></p>
+        <input type="text" id="userAnswerTwo" placeholder="Enter your answer"/>
+        <button onclick="checkAnswerTwo()">Submit</button>
+        <button onclick="showAnswerTwo()">Check Answer</button>
+        <p style='display: none;' id="answerTwo"></p>
+        <p id="feedbackTwo"></p>
+    </div>
+
+    <div style="display: none;", id="thirdQuestion">
+        <p id = 'questionThree'></p>
+        <input type="text" id="userAnswerThree" placeholder="Enter your answer"/>
+        <button onclick="checkAnswerThree()">Submit</button>
+        <button onclick="showAnswerThree()">Check Answer</button>
+        <p style='display: none;' id="answerThree"></p>
+        <p id="feedbackThree"></p>
+    </div>
+
+</body>
