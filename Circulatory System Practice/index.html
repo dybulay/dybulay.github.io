@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+    <title>circulatory system practice</title>
+    <script src = 'script.js'></script>
+    <link rel="stylesheet" href='style.css'>
+</head>
+
+<body>
+    <h1>Circulatory System Practice</h1>
+    <p id="introduction">i made these questions up to help me study</p>
+    <button onclick ="generateQuestion()">generate question</button>
+    <div style='display: none;' id="listQuestion">
+        <p id = 'questionList'></p>
+        <input type="text" id="answerList" placeholder="Enter your answer">
+        <button id="checkAnswerList" onclick="checkAnswerList()">Submit</button>
+        <p id="feedbackList"></p>
+    </div>
+
+    <div style='display: none;' id="heartQuestion">
+        <img src="./images/heart.png" width="300" height="300">
+        <p id="questionHeart"></p>
+        <input type="text" id="answerHeart" placeholder="Enter your answer">
+        <button id="checkAnswerHeart" onclick="checkAnswerHeart()">Submit</button>
+        <button id="newNumber" onclick="question3()">New Number</button>
+        <p id="feedbackHeart"></p>
+    </div>
+
+    <div style="display: none;" id="multipleChoiceQuestion">
+        <p id='questionMultipleChoice'></p>
+        <p id="answerOne"></p>
+        <p id="answerTwo"></p>
+        <p id="answerThree"></p>
+        <p id="answerFour"></p>
+        <input type="text" id="answerMultipleChoice" placeholder="Enter your answer">
+        <button id="checkAnswerMultipleChoice" onclick="checkAnswerMultipleChoice()">Submit</button>
+        <p id="feedbackMultipleChoice"></p>
+    </div>
+
+    <div style="display: none;" id="singleQuestion">
+        <p id="questionSingle"></p>
+        <input type="text" id="answerSingle" placeholder="Enter your answer">
+        <button id="checkAnswerSingle" onclick="checkAnswerSingle()">Submit</button>
+        <p id="feedbackSingle"></p>
+    </div>
+
+    <div style="display: none;" id="fromAndToQuestion">
+        <p id="questionFromAndTo"></p>
+        <input type="text" id="answerFrom" placeholder="From">
+        <button id="checkAnswerFrom" onclick="checkAnswerFrom()">Submit</button>
+        <p id="feedbackFrom"></p>
+        <input type="text" id="answerTo" placeholder="To">
+        <button id="checkAnswerTo" onclick="checkAnswerTo()">Submit</button>
+        <p id="feedbackTo"></p>
+    </div>
+</body>
