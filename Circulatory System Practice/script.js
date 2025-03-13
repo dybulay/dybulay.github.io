@@ -1,5 +1,9 @@
 const foundlist = []
-const heartParts = ["aorta", "superior vena cava", "pulmonary artery", "pulmonary veins", "right atrium", "tricuspid valve", "right ventricle", "inferior vena cava", "pulmonary trunk", "pulmonary veins", "left atrium", "mitral valve", "aortic valve", "left ventricle", "aorta"]
+const heartChambers = ["left atrium", "right atrium", "left ventricle", "right ventricle"]
+const plasmaProteins = ["albumin", "fibrinogen", "immunoglobulins"]
+const bloodVessels = ["arteries", "arterioles", "capillaries", "veins", "venules"]
+
+const heartParts = ["aortic arch", "superior vena cava", "pulmonary artery", "pulmonary vein", "right atrium", "tricuspid valve", "right ventricle", "inferior vena cava", "pulmonary trunk", "pulmonary vein", "left atrium", "mitrial valve", "aortic valve", "left ventricle", "descending aorta"]
 const foundHeartParts = []
 
 const arteries = ["coronary", "subclavian", "iliac", "carotid", "renal", "hepatic", "mesentric"]
@@ -27,12 +31,17 @@ function generateQuestion() {
     hideElements()
     foundlist.length = 0
     foundHeartParts.length = 0
-    document.getElementById('feedbackList').innerHTML = ''
-    questionNumber = (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
-    while (previousQuestion === questionNumber) {
-        questionNumber = (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+    if (document.getElementById("customQuestion").value < 6 && document.getElementById("customQuestion").value > 0) {
+        questionNumber = parseInt(document.getElementById("customQuestion").value)
+        console.log("Question number: " + questionNumber)
     }
-    previousQuestion = questionNumber
+    else {
+        questionNumber = (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+        while (previousQuestion === questionNumber) {
+            questionNumber = (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+        }
+        previousQuestion = questionNumber
+    }
     if (questionNumber === 1 || questionNumber === 2) {
         document.getElementById('listQuestion').style.display = 'block';
         document.getElementById('feedbackList').innerHTML = ""
@@ -81,14 +90,17 @@ function generateQuestion() {
 }
 
 function question1() {
-    document.getElementById("questionList").innerHTML = "Name a blood vessel"
+    document.getElementById("questionid").innerHTML = "Question ID: 1"
+    document.getElementById("questionList").innerHTML = "Name a blood vessel (all answers are plural)"
 }
 
 function question2() {
+    document.getElementById("questionid").innerHTML = "Question ID: 2"
     document.getElementById("questionList").innerHTML = "Name a plasma protein"
 }
 
 function question3() {
+    document.getElementById("questionid").innerHTML = "Question ID: 3"
     index = (Math.floor(Math.random() * (15 - 1 + 1)) + 1);
     if (foundHeartParts.length === 15) {
         document.getElementById("questionHeart").innerHTML = "You've correctly named all of the parts of the heart! Generate a new question."
@@ -102,11 +114,12 @@ function question3() {
             index = (Math.floor(Math.random() * (15 - 1 + 1)) + 1);
         }
         indexHeartGlobal = index
-        document.getElementById("questionHeart").innerHTML = "What is " + index + " called?"
+        document.getElementById("questionHeart").innerHTML = "What is " + index + " called? (all answers are singular)"
     }
 }
 
 function question4() {
+    document.getElementById("questionid").innerHTML = "Question ID: 4"
     multipleChoiceList = []
     multipleChoiceListRandom = []
     indexAnswer = (Math.floor(Math.random() * (7 - 1 + 1)) + 1);
@@ -158,15 +171,23 @@ function question4() {
 }
 
 function question5() {
+    document.getElementById("questionid").innerHTML = "Question ID: 5"
     indexAnswer = (Math.floor(Math.random() * (7 - 1 + 1)) + 1);
     arteryAnswerGlobal = (indexAnswer-1)
     document.getElementById("questionSingle").innerHTML = "Fill in the blank. The _______ artery/vein supplies the " + arteriesAnswers[indexAnswer-1] + " with blood."
 }
 
 function question6() {
+    document.getElementById("questionid").innerHTML = "Question ID: 6"
     indexAnswer = (Math.floor(Math.random() * (18 - 1 + 1)) + 1);
     bloodVesselIndexGlobal = (indexAnswer-1)
     document.getElementById("questionFromAndTo").innerHTML = "The " + bloodVessel[bloodVesselIndexGlobal] + " brings blood from the _______ to the _______"
+}
+
+
+function question7() {
+    document.getElementById("questionid").innerHTML = "Question ID: 7"
+    document.getElementById("questionList").innerHTML = "Name one of the chambers of the heart"
 }
 
 function checkAnswerFrom() {
@@ -224,44 +245,32 @@ function checkAnswerHeart() {
 
 function checkAnswerList() {
     if (questionNumber === 1) {
-        const bloodvessels = ["arteries", "arterioles", "capillaries", "veins", "venules"]
-        if (foundlist.includes(document.getElementById('answerList').value.toLowerCase())) {
-                document.getElementById('feedbackList').innerHTML = "You've already named that blood vessel! Try again."
-        }
-        else if (bloodvessels.includes(document.getElementById('answerList').value.toLowerCase())) {
-                foundlist.push(document.getElementById('answerList').value.toLowerCase())
-                document.getElementById('feedbackList').innerHTML = "That's correct! You have named " + foundlist.length + " different blood vessel(s) so far. Name another one."
-                document.getElementById('answerList').value = ''
-        }
-        else {
-                document.getElementById('feedbackList').innerHTML = "Incorrect, try again."
-                document.getElementById('answerList').value = ''
-        }
-        if (foundlist.length === 5) {
-            document.getElementById('feedbackList').innerHTML = "Congratulations! You've named them all! Generate a new question."
-            document.getElementById("answerList").style.display = 'none';
-            document.getElementById("checkAnswerList").style.display = 'none';
-        }
+        checkAnswerListFull(bloodVessels, 5)
     }
     if (questionNumber === 2) {
-        const plasmaproteins = ["albumin", "fibrinogen", "immunoglobulins"]
-        if (foundlist.includes(document.getElementById('answerList').value.toLowerCase())) {
-            document.getElementById('feedbackList').innerHTML = "You've already named that plasma protein! Try again."
-        }
-        else if (plasmaproteins.includes(document.getElementById('answerList').value.toLowerCase())) {
-                foundlist.push(document.getElementById('answerList').value.toLowerCase())
-                document.getElementById('feedbackList').innerHTML = "That's correct! You have named " + foundlist.length + " different plasma protein(s) so far. Name another one."
-                document.getElementById('answerList').value = ''
-        }
-        else {
-                document.getElementById('feedbackList').innerHTML = "Incorrect, try again."
-                document.getElementById('answerList').value = ''
-        }
-        if (foundlist.length === 3) {
-            document.getElementById('feedbackList').innerHTML = "Congratulations! You've named them all! Generate a new question."
-            document.getElementById("answerList").style.display = 'none';
-            document.getElementById("checkAnswerList").style.display = 'none';
-        }
+        checkAnswerListFull(plasmaProteins, 3)
+    }
+    if (questionNumber === 7) {
+        checkAnswerListFull(heartChambers, 4)
     }
 }
 
+function checkAnswerListFull(list, length) {
+    if (foundlist.includes(document.getElementById('answerList').value.toLowerCase())) {
+        document.getElementById('feedbackList').innerHTML = "You've already named that heart chamber Try again."
+    }
+    else if (list.includes(document.getElementById('answerList').value.toLowerCase())) {
+            foundlist.push(document.getElementById('answerList').value.toLowerCase())
+            document.getElementById('feedbackList').innerHTML = "That's correct! You have named " + foundlist.length + " out of " + length + " so far. Name another one."
+            document.getElementById('answerList').value = ''
+    }
+    else {
+            document.getElementById('feedbackList').innerHTML = "Incorrect, try again."
+            document.getElementById('answerList').value = ''
+    }
+    if (foundlist.length === length) {
+        document.getElementById('feedbackList').innerHTML = "Congratulations! You've named them all! Generate a new question."
+        document.getElementById("answerList").style.display = 'none';
+        document.getElementById("checkAnswerList").style.display = 'none';
+    }
+}
