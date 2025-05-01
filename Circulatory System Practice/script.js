@@ -3,7 +3,7 @@ const heartChambers = ["left atrium", "right atrium", "left ventricle", "right v
 const plasmaProteins = ["albumin", "fibrinogen", "immunoglobulins"]
 const bloodVessels = ["arteries", "arterioles", "capillaries", "veins", "venules"]
 
-const heartParts = ["aortic arch", "superior vena cava", "pulmonary artery", "pulmonary vein", "right atrium", "tricuspid valve", "right ventricle", "inferior vena cava", "pulmonary trunk", "pulmonary vein", "left atrium", "mitrial valve", "aortic valve", "left ventricle", "descending aorta"]
+const heartParts = ["aortic arch", "superior vena cava", "pulmonary artery", "pulmonary vein", "right atrium", "tricuspid valve", "right ventricle", "inferior vena cava", "pulmonary trunk", "pulmonary vein", "left atrium", "mitral valve", "aortic valve", "left ventricle", "descending aorta"]
 const foundHeartParts = []
 
 const arteries = ["coronary", "subclavian", "iliac", "carotid", "renal", "hepatic", "mesentric"]
@@ -11,7 +11,7 @@ const arteriesAnswers = ["heart", "shoulders/arms", "legs", "head", "kidneys", "
 
 const bloodVessel = ["aorta", "superior vena cava", "inferior vena cava", "hepatic portal system", "hepatic vein", "coronary vein", "coronary artery", "iliac vein", "iliac artery", "renal vein", "renal artery", "pulmonary vein", "pulmonary artery", "subclavian vein", "subclavian artery", "jugular", "carotid", "mesentric artery"]
 const fromVessel = ["left ventricle", "upper body", "lower body", "intestines", "liver", "heart", "left ventricle", "legs", "aorta", "kidneys", "aorta", "lungs", "right ventricle", "arms", "aorta", "head", "aorta", "aorta"]
-const toVessel = ["system circulation", "right atrium", "right atrium", "liver", "inferior vena cava", "right atrium", "heart", "inferior vena cava", "legs", "inferior vena cava", "kidneys", "left atrium", "lungs", "superior vena cava", "arms", "superior vena cava", "head", "intestines"]
+const toVessel = ["body", "right atrium", "right atrium", "liver", "inferior vena cava", "right atrium", "heart", "inferior vena cava", "legs", "inferior vena cava", "kidneys", "left atrium", "lungs", "superior vena cava", "arms", "superior vena cava", "head", "intestines"]
 
 indexHeartGlobal = 0
 previousQuestion = 0
@@ -31,14 +31,14 @@ function generateQuestion() {
     hideElements()
     foundlist.length = 0
     foundHeartParts.length = 0
-    if (document.getElementById("customQuestion").value < 6 && document.getElementById("customQuestion").value > 0) {
+    if (document.getElementById("customQuestion").value < 7 && document.getElementById("customQuestion").value > 0) {
         questionNumber = parseInt(document.getElementById("customQuestion").value)
         console.log("Question number: " + questionNumber)
     }
     else {
-        questionNumber = (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+        questionNumber = (Math.floor(Math.random() * (7 - 1 + 1)) + 1);
         while (previousQuestion === questionNumber) {
-            questionNumber = (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+            questionNumber = (Math.floor(Math.random() * (7 - 1 + 1)) + 1);
         }
         previousQuestion = questionNumber
     }
@@ -52,6 +52,9 @@ function generateQuestion() {
         }
         if (questionNumber === 2) {
             question2()
+        }
+        if (questionNumber === 7) {
+            question7()
         }
     }
     else if (questionNumber === 3) {
@@ -83,8 +86,8 @@ function generateQuestion() {
     }
     else if (questionNumber === 6) {
         document.getElementById('fromAndToQuestion').style.display = 'block';
-        document.getElementById('feedbackFrom').value = "";
-        document.getElementById('feedbackTo').value = "";
+        document.getElementById('feedbackFrom').innerHTML = "";
+        document.getElementById('feedbackTo').innerHTML = "";
         question6()
     }
 }

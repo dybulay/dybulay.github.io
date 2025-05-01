@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+    <title>respiratory system practice</title>
+    <script src = 'script.js'></script>
+    <link rel="stylesheet" href='style.css'>
+</head>
+
+<body>
+    <h1>Respiratory System Practice</h1>
+    <p id="questionid">these questions are from the freakin packet we got and also the test (leave blank for random)</p>
+    <input type="number" id="customQuestion" placeholder="Enter question number">
+    <button onclick ="generateQuestion()">generate question</button>
+
+    <div style="display: block;" id="multipleChoiceQuestion">
+        <p id='questionMultipleChoice'></p>
+        <p id="answerOne"></p>
+        <p id="answerTwo"></p>
+        <p id="answerThree"></p>
+        <p id="answerFour"></p>
+        <input type="text" id="answerMultipleChoice" placeholder="Enter your answer">
+        <button id="checkAnswerMultipleChoice" onclick="checkAnswerMultipleChoice()">Submit</button>
+        <p id="feedbackMultipleChoice"></p>
+    </div>
+</body>
+
