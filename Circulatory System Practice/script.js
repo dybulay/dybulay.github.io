@@ -255,6 +255,7 @@ function hideElements() {
     document.getElementById('multipleChoiceQuestion').style.display = 'none';
     document.getElementById('singleQuestion').style.display = 'none';
     document.getElementById('fromAndToQuestion').style.display = 'none';
+    document.getElementById('imageMultipleChoice').style.display = 'none'
 }
 
 function generateQuestion() {
@@ -427,7 +428,6 @@ function question7() {
 
 function question8() {
     let image = document.getElementById('imageMultipleChoice')
-    document.getElementById('imageMultipleChoice').style.display = 'none'
     indexMultipleChoiceQuestion = (questionNumber-7)
 
     randomize(answers[indexMultipleChoiceQuestion-1])
